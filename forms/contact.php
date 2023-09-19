@@ -12,14 +12,18 @@
 
     // Create email headers
     $headers = "From: $name <$email>\r\n";
-    $headers .= "Reply-To: $email\r\n";
+    //$headers .= "Reply-To: $email\r\n";
 
     // Send the email
-    if (mail($to, $subject, $message, $headers)) {
-        echo "success";
-    } else {
-        echo "error";
-    }
+    mail($to, $subject, $message, $headers) 
+    or die(
+        'Error'
+    );
+
+    echo"message send!";
+  //  } else {
+  //      echo "error";
+ //   }
 // } else {
 //     // Not a POST request, so redirect to the contact form page
 //     header("Location: index.html"); // Replace with the actual filename of your form page
