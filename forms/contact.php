@@ -1,41 +1,28 @@
+
 <?php
-  /**
-  * Requires the "PHP Email Form" library
-  * The "PHP Email Form" library is available only in the pro version of the template
-  * The library should be uploaded to: vendor/php-email-form/php-email-form.php
-  * For more info and help: https://bootstrapmade.com/php-email-form/
-  */
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get the form fields and sanitize user input
+    $name = strip_tags($_POST["name"]);
+    $email = filter_var($_POST["email"], FILTER_SANITIZE_EMAIL);
+    $subject = strip_tags($_POST["subject"]);
+    $message = strip_tags($_POST["message"]);
 
-  // Replace contact@example.com with your real receiving email address
- if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $name = $_POST["name"];
-    $email = $_POST["email"];
-    $message = $_POST["message"];
-    
-    $to = "ops@natureaviation.com, natureaviation@gmail.com";
-    $subject = "New Contact Form Submission";
-    $headers = "From: $email\r\n";
+    // Set your email address where you want to receive messages
+    $to = "takudzwa17@live.com";
+
+    // Create email headers
+    $headers = "From: $name <$email>\r\n";
     $headers .= "Reply-To: $email\r\n";
-    
-    $message_body = "Name: $name\nEmail: $email\nMessage:\n$message";
-    
-    if (mail($to, $subject, $message_body, $headers)) {
-        $success_message = "Your message has been sent successfully!";
+
+    // Send the email
+    if (mail($to, $subject, $message, $headers)) {
+        echo "success";
     } else {
-        $error_message = "Oops! Something went wrong and we couldn't send your message.";
+        echo "error";
     }
+} else {
+    // Not a POST request, so redirect to the contact form page
+    header("Location: index.html"); // Replace with the actual filename of your form page
+    exit();
 }
-
-  // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
-  /*
-  $contact->smtp = array(
-    'host' => 'example.com',
-    'username' => 'example',
-    'password' => 'pass',
-    'port' => '587'
-  );
-  */
-
-
-  echo $contact->send();
 ?>
