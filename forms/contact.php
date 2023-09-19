@@ -1,6 +1,6 @@
 
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get the form fields and sanitize user input
     $name = ($_POST["name"]);
     $email = ($_POST["email"]);
@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "success";
     } else {
         echo "error";
-    }}
+    }
 // } else {
 //     // Not a POST request, so redirect to the contact form page
 //     header("Location: index.html"); // Replace with the actual filename of your form page
