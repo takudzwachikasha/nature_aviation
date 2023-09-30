@@ -19,6 +19,26 @@
       return document.querySelector(el)
     }
   }
+  function sendEmail() {
+      // Get the message from the textbox
+      var message = document.getElementById("message").value;
+
+      // Check if the message is not empty
+      if (message.trim() === "") {
+        alert("Please enter a message.");
+        return;
+      }
+
+      // Set the recipient's email address
+      var recipient = "harrisonchikks@gmail.com";
+
+      // Compose the mailto link
+      var subject = document.getElementById("subject").value;
+      var mailtoLink = "mailto:" + recipient + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(message);
+
+      // Open the default email client with the mailto link
+      window.location.href = mailtoLink;
+    }
 
   /**
    * Easy event listener function

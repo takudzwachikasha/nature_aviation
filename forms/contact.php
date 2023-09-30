@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Please fill in all required fields.";
     } else {
         // Set your email address where you want to receive messages
-        $to = "harrisonchikks@gmail.com";
+        $to = "natureaviation@gmail.com";
 
         // Create email headers
         $headers = "From: $name <$email>\r\n";
